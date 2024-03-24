@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uploaded image</title>
+</head>
+<body>
+    <h1>Uploaded image</h1>
+    <h2>Image: {{ filename }}</h2>
+    <img src="{{ url_for('uploaded_image', filename=filename) }}" alt="{{ filename }}">
+    <!-- Add the following lines to display the annotated image -->
+<h1>Annotated Image:</h1>
+<p>
+  <img src="{{ url_for('uploaded_image', filename=annotated_image) }}" alt="Annotated image">
+</p>
+    <h2>Vehicle count: {{ count }}</h2>
+</body>
+</html>

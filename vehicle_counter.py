@@ -36,28 +36,9 @@ def upload_file():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             vehicles_folder_count = analyze_image(filepath)
-            return render_template('uploaded.html', filename=filename, count=vehicles_folder_count)
-    return render_template('upload.html')
-
-
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        file = request.files['file']
-        if file:
-            filename = secure_filename(file.filename)
-            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(filepath)
-
-            # Perform vehicle detection and get the processed image
-            processed_img = vehicle_count(filepath)
-
-            # Calculate the vehicle count
-            vehicles_folder_count = len(
-                vd.detect_vehicles(cv2.imread(filepath)))
-
-            # Pass the processed image and vehicle count to the template
-            return render_template('uploaded.html', filename=filename, count=vehicles_folder_count, processed_img=processed_img)
+            annotated_image_path = vehicle_count(filepath)
+            filename1 = os.path.basename(annotated_image_path)
+            return render_template('uploaded.html', filename=filename, count=vehicles_folder_count, annotated_image=filename1)
     return render_template('upload.html')
 
 
@@ -85,9 +66,13 @@ def vehicle_count(image_path):
 
     # Convert the image to RGB format
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    filename = os.path.basename(image_path)
+    annotated_image_path = os.path.join(
+        app.config['UPLOAD_FOLDER'], 'annotated_' + filename)
+    cv2.imwrite(annotated_image_path, img)
 
     # Return the processed image
-    return img
+    return annotated_image_path
 
 
 def analyze_image(filepath):
