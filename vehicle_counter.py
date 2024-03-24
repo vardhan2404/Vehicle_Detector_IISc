@@ -75,6 +75,11 @@ def vehicle_count(image_path):
     return annotated_image_path
 
 
+@app.route("/Aboutus")
+def AboutUs():
+    return "This is the about us page"
+
+
 def analyze_image(filepath):
     img = cv2.imread(filepath)
 

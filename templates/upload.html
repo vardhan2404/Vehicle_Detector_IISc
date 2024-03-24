@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload an image</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .navbar{
+            background-color: navy;
+            overflow: hidden;
+        }
+        .navbar a{
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover
+        {
+            background-color: lightblue;
+            color: black;
+        }
+        .active{
+            background-color: lightblue;
+            color: black;
+        }
+        body{
+            background-color: lightblue;
+            font-family: Arial, sans-serif;
+        }
+        h1{
+            color: navy;
+        }
+        h2{
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="active">Home</a>
+        <a href="/Aboutus">About us</a>
+        <a href="#">Contact us</a>
+        <a href="#">Profile</a>
+    </div>
+    <div class="container">
+        <h1>Upload an image</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Choose an image:</label>
+                <input type="file" class="form-control-file" id="file" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uploaded image</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: lightblue;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: navy;
+        }
+        h2{
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>Uploaded image</h1>
+    <h2>Image: {{ filename }}</h2>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ url_for('uploaded_image', filename=filename) }}" alt="{{ filename }}">
+    </div>
+    <!-- Add the following lines to display the annotated image -->
+    <h1>Annotated Image:</h1>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ url_for('uploaded_image', filename=annotated_image) }}" alt="Annotated image">
+    </div>
+    <h2>Vehicle count: {{ count }}</h2>
+    <!-- Add a Bootstrap button to upload a new image -->
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="file">Choose an image:</label>
+            <input type="file" class="form-control-file" id="file" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</body>
+</html>
