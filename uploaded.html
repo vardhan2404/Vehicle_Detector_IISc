@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uploaded image</title>
+</head>
+<body>
+    <h1>Uploaded image</h1>
+    <h2>Image: {{ filename }}</h2>
+    <img src="{{ url_for('uploaded_image', filename=filename) }}" alt="{{ filename }}">
+    <h2>Vehicle count: {{ count }}</h2>
+</body>
+</html>
